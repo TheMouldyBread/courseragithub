@@ -1,2 +1,2 @@
-# Coursera-stuff
+# Courseragithub
 Coursera course content.
