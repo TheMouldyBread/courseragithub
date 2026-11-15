@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Programmable Encrypted Explosion-proof Pressurised Effective Electronic Safe</h1>
+<h2>This is THE <a
+href="https://en.wikipedia.org/wiki/Safe">safe</a>
+</h2>
+<p id="message">Enter the url of the image to put
+in the safe and a new passcode.</p>
+<input type="text" id="image-url"
+placeholder="Image URL: https://...">
+<br/>
+<input type="text" id="safe-code-input"
+placeholder="passcode" readonly>
+<br/>
+<button type="button" id="btn-1">1</button>
+<button type="button" id="btn-2">2</button>
+<button type="button" id="btn-3">3</button>
+<br/>
+<button type="button" id="btn-4">4</button>
+<button type="button" id="btn-5">5</button>
+<button type="button" id="btn-6">6</button>
+<br/>
+<button type="button" id="btn-7">7</button>
+<button type="button" id="btn-8">8</button>
+<button type="button" id="btn-9">9</button>
+<br/>
+<button type="button" id="btn-0">0</button>
+<button type="button" id="btn-clear">C</button>
+<button type="button" id="btn-lock"
+style="display:inline">Lock</button>
+<button type="button" id="btn-unlock"
+style="display:none">Unlock</button>
+<br/>
+<img id="saved-img">
+</body>
+<script>
+// Constants
+const MINIMUM_PASSCODE_LENGTH = 4
+const MAXIMUM_PASSCODE_LENGTH = 10
+// Elements that we'll use
+var imageUrlInput = document.getElementById("imageurl")
+var passcodeInput = document.getElementById("safecode-input")
+var messageElement =
+document.getElementById("message")
+var imageElement = document.getElementById("savedimg")
+var passcode = ""
+// Count is used for number of wrong passcode
+attempts
+var count = 0
+document.getElementById("btn-lock").onclick = () =>
+{
+// We'll start by validating the user input:
+// Make sure an image was selected
+if (imageUrlInput.value.length == 0) {
+messageElement.innerHTML = "Enter image url"
+}
+// Make sure the entered passcode is valid
+else if (passcodeInput.value.length <
+MINIMUM_PASSCODE_LENGTH ||
+passcodeInput.value.length >
+MAXIMUM_PASSCODE_LENGTH) {
+messageElement.innerHTML = `Passcode must
+contain between ${MINIMUM_PASSCODE_LENGTH} and
+${MAXIMUM_PASSCODE_LENGTH} characters`
+}
+// User input passed validation
+else {
+//store passcode to a variable
+passcode = passcodeInput.value
+// Clear the passcode so it's hidden
+passcodeInput.value = ""
+// Hide the image url input box
+imageElement.style.display = "none"
+// Hide the image
+imageUrlInput.style.display = "none"
+// Hide the lock button and show the unlock
+button
+document.getElementById("btnlock").style.display = "none"
+document.getElementById("btnunlock").style.display = "inline"
+messageElement.innerHTML = "Enter the passcode to view the image"
+}
+}
+document.getElementById("btn-unlock").onclick = ()
+=> {
+// Check if passcode is correct
+if (passcode === passcodeInput.value) {
+imageElement.style.display = "inline-block"
+} else {
+messageElement.innerHTML = "Invalid passcode entered, try again" count++
+}
+passcodeInput.value = ""
+// After 3 wrong attempts, the image app will self
+destruct!
+if(count == 3) {
+imageElement.src = ""
+passcodeInput.value = ""
+passcode = ""
+messageElement.innerHTML = "Image has self destructed ha ha u suk"
+count = 0
+}
+}
+document.getElementById("image-url").oninput = () =>
+{
+document.getElementById("saved-img").src =
+document.getElementById("image-url").value
+}
+// When button 0-9 is clicked, the number gets
+concatenated into the passcode input field
+document.getElementById("btn-0").onclick = () => {
+document.getElementById("safe-code-input").value
++= "0"
+}
+document.getElementById("btn-1").onclick = () => {
+document.getElementById("safe-code-input").value
++= "1"
+}
+document.getElementById("btn-2").onclick = () => {
+document.getElementById("safe-code-input").value
++= "2"
+}
+document.getElementById("btn-3").onclick = () => {
+document.getElementById("safe-code-input").value
++= "3"
+}
+document.getElementById("btn-4").onclick = () => {
+document.getElementById("safe-code-input").value
++= "4"
+}
+document.getElementById("btn-5").onclick = () => {
+document.getElementById("safe-code-input").value
++= "5"
+}
+document.getElementById("btn-6").onclick = () => {
+document.getElementById("safe-code-input").value
++= "6"
+}
+document.getElementById("btn-7").onclick = () => {
+document.getElementById("safe-code-input").value
++= "7"
+}
+document.getElementById("btn-8").onclick = () => {
+document.getElementById("safe-code-input").value
++= "8"
+}
+document.getElementById("btn-9").onclick = () => {
+document.getElementById("safe-code-input").value
++= "9"
+}
+document.getElementById("btn-clear").onclick = () =>
+{
+// To clear the passcode input field, reassign the
+passcode input field to empty string
+document.getElementById("safe-code-input").value =
+""
+}
+</script>
+
